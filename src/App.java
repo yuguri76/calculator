@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
@@ -5,6 +6,8 @@ public class App {
         Scanner sc = new Scanner(System.in);
         String input;
         int result = 0;
+        int arr[] = new int[10]; // 크기 10인 int 배열 만들기
+        int i = 0; //배열 인덱스
 
         do {
             System.out.print("첫 번째 숫자를 입력하세요: ");//버퍼에는 \n 저장
@@ -38,6 +41,10 @@ public class App {
             }
 
             System.out.println("결과: " + result);
+            arr[i] = result;
+            i++;
+
+            //System.out.println(Arrays.toString(arr));  //배열 출력, 디버깅용
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             input = sc.nextLine();//엔터를 쳐도 넘어갈수 있게끔 nextLine으로 둠. nextLine은 버퍼에 있는 개행문자까지 모든 문자를 읽음.
