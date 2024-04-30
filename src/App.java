@@ -1,4 +1,5 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -6,8 +7,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         String input;
         int result = 0;
-        int arr[] = new int[10]; // 크기 10인 int 배열 만들기
-        int i = 0; //배열 인덱스
+        List<Integer> results = new ArrayList<>(); //Arraylist 사용 - 크기 동적으로 조정되고, 인덱스를 사용해서 요소에 접근이 쉬움. 그리고 끝에 요소 추가, 삭제에 유용
 
         do {
             System.out.print("첫 번째 숫자를 입력하세요: ");//버퍼에는 \n 저장
@@ -41,22 +41,19 @@ public class App {
             }
 
             System.out.println("결과: " + result);
+            results.add(result); //리스트에 결과 추가
 
-            //1-6파트
-            if (i < arr.length) { //배열의 크기보다 작을 때 그대로 저장
-                arr[i] = result;
-                i++;
-            } else { //배열의 크기보다 커졌을 때 왼쪽으로 하나씩 옮겨주면서 마지막에 저장.
-                for (int j = 1; j < arr.length; j++)
-                    arr[j - 1] = arr[j];
-                arr[arr.length - 1] = result;
-            }
-
-            System.out.println(Arrays.toString(arr));  //배열 출력, 디버깅용
+            //System.out.println(results);  //배열 출력, 디버깅용
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             input = sc.nextLine();//엔터를 쳐도 넘어갈수 있게끔 nextLine으로 둠. nextLine은 버퍼에 있는 개행문자까지 모든 문자를 읽음.
 
+            if (input.equals("remove")){
+                    results.remove(0);
+                    //System.out.println(results);  //배열 출력, 디버깅용
+                }
+
         } while (!input.equals("exit"));//input이 exit와 동일해지기 전까지 무한반복
+        sc.close();//스캐너 닫아주기
     }
 }
