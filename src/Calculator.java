@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Calculator {
     List<Integer> results = new ArrayList<>();
 
-    public int cal(int num1, int num2, char op) throws Exception {
+    public int calculate(int num1, int num2, char op) throws Exception {
         int result = 0;
 
         switch (op) {
