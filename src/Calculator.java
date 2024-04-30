@@ -42,4 +42,10 @@ public class Calculator {
         }
     }
 
+    public void inquiryResults() {
+        for (int res : results){
+            System.out.println(res);
+        }
+    }
+
 }
