@@ -45,13 +45,23 @@ public class App {
 
             //System.out.println(results);  //배열 출력, 디버깅용
 
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
+            input = sc.nextLine();
+            if (input.equals("remove")){
+                results.remove(0);
+                //System.out.println(results);  //배열 출력, 디버깅용
+            }
+
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            input = sc.nextLine();
+            if (input.equals("inquiry")) {
+                for (int res : results) { //foreach 사용해서 결과출력
+                    System.out.println(res);
+                }
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             input = sc.nextLine();//엔터를 쳐도 넘어갈수 있게끔 nextLine으로 둠. nextLine은 버퍼에 있는 개행문자까지 모든 문자를 읽음.
-
-            if (input.equals("remove")){
-                    results.remove(0);
-                    //System.out.println(results);  //배열 출력, 디버깅용
-                }
 
         } while (!input.equals("exit"));//input이 exit와 동일해지기 전까지 무한반복
         sc.close();//스캐너 닫아주기
