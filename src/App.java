@@ -41,10 +41,18 @@ public class App {
             }
 
             System.out.println("결과: " + result);
-            arr[i] = result;
-            i++;
 
-            //System.out.println(Arrays.toString(arr));  //배열 출력, 디버깅용
+            //1-6파트
+            if (i < arr.length) { //배열의 크기보다 작을 때 그대로 저장
+                arr[i] = result;
+                i++;
+            } else { //배열의 크기보다 커졌을 때 왼쪽으로 하나씩 옮겨주면서 마지막에 저장.
+                for (int j = 1; j < arr.length; j++)
+                    arr[j - 1] = arr[j];
+                arr[arr.length - 1] = result;
+            }
+
+            System.out.println(Arrays.toString(arr));  //배열 출력, 디버깅용
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             input = sc.nextLine();//엔터를 쳐도 넘어갈수 있게끔 nextLine으로 둠. nextLine은 버퍼에 있는 개행문자까지 모든 문자를 읽음.
