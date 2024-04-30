@@ -1,13 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
+        ArithmeticCalaulator arithmeticCalaulator = new ArithmeticCalaulator();
+        CircleCalculator circleCalculator = new CircleCalculator();
         Scanner sc = new Scanner(System.in);
         String input = "";
-        //List<Integer> results = new ArrayList<>(); //Arraylist 사용 - 크기 동적으로 조정되고, 인덱스를 사용해서 요소에 접근이 쉬움. 그리고 끝에 요소 추가, 삭제에 유용
+
 
         do {
             System.out.println("사칙연산을 진행할지(cal), 원의 넓이를 구할지(circle) 입력해주세요.");
@@ -17,31 +16,31 @@ public class App {
 
                 if(input.equals("cal")) { //사칙연산 구하기
                     System.out.print("첫 번째 숫자를 입력하세요: ");//버퍼에는 \n 저장
-                    int num1 = sc.nextInt();
+                    double num1 = sc.nextDouble();
 
                     System.out.print("두 번째 숫자를 입력하세요: ");//버퍼에는 \n 저장
-                    int num2 = sc.nextInt();
+                    double num2 = sc.nextDouble();
 
                     System.out.print("사칙연산 기호를 입력하세요: ");//버퍼에는 \n 저장
                     char op = sc.next().charAt(0);
 
                     sc.nextLine();//버퍼에 있는 \n 빼주기
 
-                    int result = calculator.calculate(num1, num2, op);  // calculator 클래스 활용
+                    double result = arithmeticCalaulator.calculate(num1, num2, op);
 
                     System.out.println("결과: " + result);
 
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
                     input = sc.nextLine();
                     if (input.equals("remove")) {
-                        calculator.removeResult();//remove 갖고와서 구현
+                        arithmeticCalaulator.removeResult(); // remove 갖고와서 구현
                         //System.out.println(results);  //배열 출력, 디버깅용
                     }
 
                     System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                     input = sc.nextLine();
                     if (input.equals("inquiry")) {
-                        calculator.inquiryResults();//inquiry 갖고와서구현
+                        arithmeticCalaulator.inquiryResults(); // inquiry 갖고와서 구현
                     }
 
 
@@ -50,14 +49,14 @@ public class App {
                     double radius = sc.nextDouble(); //원반지름 입력받기
                     sc.nextLine();//버퍼 비우기
 
-                    double area = calculator.calculateCircleArea(radius);
+                    double area = circleCalculator.calculateCircleArea(radius);
                     System.out.println("원의 넓이 : " + area);
 
-                    calculator.inquiryCircle();
+                    circleCalculator.inquiryCircle();
                     //System.out.println(results);  //배열 출력, 디버깅용
                 } else {
                     System.out.println("유효한 값을 입력해주세요"); //cal, circle 이외의 값이 들어왔을 때 예외처리
-                    break;
+                    continue;
                 }
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
