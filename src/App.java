@@ -31,10 +31,7 @@ public class App {
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
                 input = sc.nextLine();
                 if (input.equals("remove")) {
-                    List<Integer> temp = calculator.Getter();
-                    temp.remove(0);
-                    calculator.Setter(temp);
-
+                    calculator.removeResult();//remove 갖고와서 구현
                     //System.out.println(results);  //배열 출력, 디버깅용
                 }
 

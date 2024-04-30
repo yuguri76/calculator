@@ -36,4 +36,10 @@ public class Calculator {
         this.results = newResults;
     }
 
+    public void removeResult() {
+        if(!results.isEmpty()) {
+            results.remove(0);
+        }
+    }
+
 }
