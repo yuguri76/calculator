@@ -7,7 +7,7 @@ public class App {
         Calculator calculator = new Calculator();
         Scanner sc = new Scanner(System.in);
         String input = "";
-        List<Integer> results = new ArrayList<>(); //Arraylist 사용 - 크기 동적으로 조정되고, 인덱스를 사용해서 요소에 접근이 쉬움. 그리고 끝에 요소 추가, 삭제에 유용
+        //List<Integer> results = new ArrayList<>(); //Arraylist 사용 - 크기 동적으로 조정되고, 인덱스를 사용해서 요소에 접근이 쉬움. 그리고 끝에 요소 추가, 삭제에 유용
 
         do {
             try {
@@ -25,21 +25,23 @@ public class App {
                 int result = calculator.calculate(num1, num2, op);  // calculator 클래스 활용
 
                 System.out.println("결과: " + result);
-                results.add(result); //리스트에 결과 추가
 
                 //System.out.println(results);  //배열 출력, 디버깅용
 
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
                 input = sc.nextLine();
                 if (input.equals("remove")) {
-                    results.remove(0);
+                    List<Integer> temp = calculator.Getter();
+                    temp.remove(0);
+                    calculator.Setter(temp);
+
                     //System.out.println(results);  //배열 출력, 디버깅용
                 }
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 input = sc.nextLine();
                 if (input.equals("inquiry")) {
-                    for (int res : results) { //foreach 사용해서 결과출력
+                    for (int res : calculator.Getter()) { //foreach 사용해서 결과출력
                         System.out.println(res);
                     }
                 }
